@@ -1,5 +1,8 @@
+using JetBrains.Annotations;
+
 namespace AdventOfCode.Day1;
 
+[DayEntryPoint(1)]
 public class SonarDepthMeasurement
 {
     internal static int GetNumberOfTimesDepthMeasurementIncreases(IReadOnlyList<int> measurements)
@@ -32,7 +35,7 @@ public class SonarDepthMeasurement
         """;
         var res = GetNumberOfTimesDepthMeasurementIncreases(SplitToLines(data).Select(s => Convert.ToInt32(s)).ToArray());
         Console.WriteLine($"Example has {res} measurements that are larger than the previous measurement");
-        
+
         IEnumerable<string> SplitToLines(string input)
         {
             using var reader = new StringReader(input);
@@ -43,7 +46,8 @@ public class SonarDepthMeasurement
         }
     }
 
-    public static void Puzzle()
+    [UsedImplicitly]
+    public static void Main()
     {
         var data = File.ReadAllLines("./day1/input.txt");
         var res = GetNumberOfTimesDepthMeasurementIncreases(data.Select(s => Convert.ToInt32(s)).ToArray());
